@@ -3,7 +3,7 @@ from words import words
 MAX_HINTS = 2  # set maximum number of hints allowed
 
 def choose_word(words):
-    word = random.choice(words)  # randomly chooses something from the list
+    word = random.choice(words)  # randomly chooses something from the wordlist
     while '-' in word or ' ' in word:
         word = random.choice(words)
 
@@ -24,7 +24,6 @@ def hangman():
         print('Lives remaining:', lives,
               ' You have used these letters: ', ' '.join(used_letters))
 
-        # what current word is (ie W - R D)
         word_list = [
             letter if letter in used_letters else '-' for letter in word]
         print('Current word: ', ' '.join(word_list))
@@ -47,7 +46,7 @@ def hangman():
                 print('')
 
             else:
-                lives -= 1  # takes away a life if wrong
+                lives -= 1  # takes away a life each time if wrong
                 print('\nYour letter,', user_input, 'is not in the word.')
 
         elif user_input in used_letters:
